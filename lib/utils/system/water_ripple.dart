@@ -46,6 +46,7 @@ class NoSplash extends InteractiveInkFeature {
 }
 
 // 隐藏滚动水波纹配置
+// 使用 ThemeData.useMaterial3 或重写 ScrollBehavior.buildOverscrollIndicator
 class HideScrollWaterRipple extends StatelessWidget {
   final Widget child;
   const HideScrollWaterRipple(this.child, {Key? key}) : super(key: key);
@@ -61,8 +62,7 @@ class HideScrollWaterRipple extends StatelessWidget {
 
 class NoShadowScrollBehavior extends ScrollBehavior {
   @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     switch (getPlatform(context)) {
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
@@ -71,7 +71,7 @@ class NoShadowScrollBehavior extends ScrollBehavior {
         return GlowingOverscrollIndicator(
           showLeading: false,
           showTrailing: false,
-          axisDirection: axisDirection,
+          axisDirection: details.direction,
           color: Theme.of(context).colorScheme.secondary,
           child: child,
         );
@@ -83,7 +83,7 @@ class NoShadowScrollBehavior extends ScrollBehavior {
           showLeading: false,
           //不显示尾部水波纹
           showTrailing: false,
-          axisDirection: axisDirection,
+          axisDirection: details.direction,
           color: Theme.of(context).colorScheme.secondary,
           child: child,
         );

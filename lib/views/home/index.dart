@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -35,11 +34,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        title: const Text('data'),
         centerTitle: true,
         elevation: 0,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(35),
+          preferredSize: const Size.fromHeight(50),
           child: Row(
             children: [
               Expanded(
@@ -56,7 +55,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   boxShadow: [
                     BoxShadow(
                       offset: Offset(2, 1), //x,y轴
-                      color: Colors.white, //投影颜色
+                      color: Colors.deepPurple, //投影颜色
                       blurRadius: 20, //模糊半径
                       spreadRadius: 0.03, // 阴影距离
                     )
@@ -70,11 +69,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: controller,
-        children: [
-          Container(child: Text('bar1')),
-          Container(child: Text('bar2')),
-          Container(child: Text('bar3')),
-          Container(child: Text('bar4')),
+        children: const [
+          Text('bar1'),
+          Text('bar2'),
+          Text('bar3'),
+          Text('bar4'),
+          Text('bar5'),
+          Text('bar6'),
+          Text('bar7'),
+          Text('bar8'),
         ],
       ),
     );
