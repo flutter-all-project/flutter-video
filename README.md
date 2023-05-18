@@ -2,15 +2,17 @@
 
 A new Flutter project.
 
-## Getting Started
+## go_router
+```dart
+// 获取当前路由名字及参数的合并值
+context.namedLocation('home');
 
-This project is a starting point for a Flutter application.
+// RouteMatch
+debugPrint("${GoRouter.of(context).routerDelegate.currentConfiguration}");
 
-A few resources to get you started if this is your first Flutter project:
+// 将会打印出最后一个,也就`当前子路由的位置
+debugPrint(GoRouter.of(context).routerDelegate.currentConfiguration.last.matchedLocation);
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+// 获取当前路由的完整路径
+debugPrint(GoRouter.of(context).location);
+```
