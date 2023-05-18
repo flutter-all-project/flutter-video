@@ -22,9 +22,10 @@ class MyApp extends StatelessWidget {
       //   useMaterial3: true,
       // ),
 
-      theme: ThemeData(colorScheme: const ColorScheme.light()), // 亮色主题
-      darkTheme: ThemeData(colorScheme: const ColorScheme.dark()), // 暗色主题
-
+      // 亮色主题
+      theme: ThemeData(colorScheme: const ColorScheme.light()),
+      // 暗色主题
+      darkTheme: ThemeData(colorScheme: const ColorScheme.dark()),
       // 设置日间夜间模式、或者跟随系统
       themeMode: ThemeMode.light,
 
