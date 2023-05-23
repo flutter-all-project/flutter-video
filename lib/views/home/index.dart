@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_video/views/home/comp/wechat_picker_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       body: TabBarView(
         controller: controller,
         children: const [
-          Text('bar1'),
+          WeChatPickerScreen(),
           Text('bar2'),
           Text('bar3'),
           Text('bar4'),
