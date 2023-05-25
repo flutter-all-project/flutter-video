@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_video/config/theme/theme.dart';
 import 'package:flutter_video/router/index.dart';
 import 'package:flutter_video/utils/system/scroll_behavior.dart';
-import 'package:flutter_video/utils/system/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

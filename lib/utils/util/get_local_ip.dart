@@ -1,4 +1,4 @@
-part of util.system;
+import 'dart:io';
 
 getLocationPcIp() async {
   // 内网ip

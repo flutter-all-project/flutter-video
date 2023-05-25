@@ -1,7 +1,7 @@
-part of util.system;
-
 // 扩展类：extension 自定义名称 on 指定类
 // 颜色值转换
+import 'dart:ui';
+
 extension ColorToString on String {
   Color toColor() {
     String colorString = this;

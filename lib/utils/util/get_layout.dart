@@ -1,7 +1,7 @@
-part of util.system;
-
 // 获取 widget 部件的元素( context , Element 对象)的尺寸
 // 也可以通过 global key 给 widget上设置 key 通过 key.currentContext 获取当前 widget 的 Element
+import 'package:flutter/material.dart';
+
 getSize({BuildContext? context, GlobalKey? key}) {
   // 找到 renderObject
   // ignore: unused_local_variable
