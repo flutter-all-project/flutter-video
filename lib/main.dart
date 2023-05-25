@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       // 设置日间夜间模式、或者跟随系统
       themeMode: ThemeMode.light,
 
-      //  将物理键盘事件绑定到用户界面中的操作,安卓高版本长按图标出现的操作
+      //  将物理键盘事件绑定到用户界面中的操作, 快捷键操作（按什么键执行什么操作）
       shortcuts: <ShortcutActivator, Intent>{
         ...WidgetsApp.defaultShortcuts,
         const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent()
