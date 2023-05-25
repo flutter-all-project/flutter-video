@@ -15,7 +15,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 1000), () => context.replace('/main-tab'));
+    Future.delayed(const Duration(seconds: 2), () => context.replace('/main-tab'));
   }
 
   @override

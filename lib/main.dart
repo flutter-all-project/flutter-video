@@ -1,9 +1,25 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/router/index.dart';
 import 'package:flutter_video/utils/system/scroll_behavior.dart';
+import 'package:flutter_video/utils/system/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // 当输入和显示频率不同导致的性能下降处理
+  GestureBinding.instance.resamplingEnabled = true;
+  // 优化图片缓存内存
+  // 在图片加载解码完成之前，无法知道到底将要消耗多少内存，容易产生大量的IO操作，导致内存峰值过高
+  // 图片缓存个数 100
+  PaintingBinding.instance.imageCache.maximumSize = 100;
+  // 图片缓存大小 50m
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
+
+  await ScreenUtil.ensureScreenSize();
+
   runApp(const MyApp());
 }
 
@@ -16,20 +32,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Video 播放器',
       routerConfig: CustomRouter().routers,
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      //   splashFactory: NoSplash.splashFactory,
-      //   useMaterial3: true,
-      // ),
 
       // 亮色主题
-      theme: ThemeData(colorScheme: const ColorScheme.light()),
+      theme: lightTheme,
       // 暗色主题
-      darkTheme: ThemeData(colorScheme: const ColorScheme.dark()),
+      darkTheme: darkTheme,
       // 设置日间夜间模式、或者跟随系统
       themeMode: ThemeMode.light,
 
-      //  将物理键盘事件绑定到用户界面中的操作, 快捷键操作（按什么键执行什么操作）
+      // 将物理键盘事件绑定到用户界面中的操作, 快捷键操作（按什么键执行什么操作）
       shortcuts: <ShortcutActivator, Intent>{
         ...WidgetsApp.defaultShortcuts,
         const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent()
@@ -50,6 +61,18 @@ class MyApp extends StatelessWidget {
       checkerboardRasterCacheImages: false,
       // 关上渲染到屏幕外位图的层的棋盘格,警告 web 不可开启,否则无法启动
       checkerboardOffscreenLayers: false,
+
+      builder: (context, child) {
+        ScreenUtil.init(context, designSize: const Size(375, 812));
+
+        return MediaQuery(
+          // 处理屏幕旋转之后 ScreenUtil.init 的值及时修正
+          key: ObjectKey(MediaQuery.of(context).orientation),
+          // 设置文字大小不随系统设置改变（flutter screen 插件用）
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: child ?? Container(),
+        );
+      },
     );
   }
 }

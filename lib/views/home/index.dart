@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/views/home/comp/video_player.dart';
 import 'package:flutter_video/views/home/comp/wechat_picker_screen.dart';
 
@@ -9,7 +10,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with TickerProviderStateMixin {
+class _HomeState extends State<Home> with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late TabController? controller;
 
   List<Widget> tabs = [
@@ -23,6 +24,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     const Tab(text: '推荐7'),
   ];
 
+  // 当页面不显示的时候也常驻在内存中,继承自 AutomaticKeepAliveClientMixin
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   void initState() {
     setState(() {
@@ -34,14 +39,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('data'),
+        title: const Text('标题'),
         centerTitle: true,
         elevation: 0,
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: Row(
+          preferredSize: Size.fromHeight(30.h),
+          child: Stack(
             children: [
               Expanded(
                 flex: 1,
@@ -51,19 +58,22 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   tabs: tabs,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 0.03),
-                decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(2, 1), //x,y轴
-                      color: Colors.deepPurple, //投影颜色
-                      blurRadius: 20, //模糊半径
-                      spreadRadius: 0.03, // 阴影距离
-                    )
-                  ],
+              Positioned(
+                right: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 0.03.w),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(2, 1), //x,y轴
+                        color: Colors.black38, //投影颜色
+                        blurRadius: 20, //模糊半径
+                        spreadRadius: 0.03, // 阴影距离
+                      )
+                    ],
+                  ),
+                  child: const Icon(Icons.menu),
                 ),
-                child: const Icon(Icons.menu),
               )
             ],
           ),
