@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ErrorScreen extends StatefulWidget {
-  const ErrorScreen({Key? key, required this.errorState}) : super(key: key);
+  const ErrorScreen({Key? key, required this.errState}) : super(key: key);
 
-  final Exception? errorState;
+  final GoRouterState errState;
 
   @override
   State<ErrorScreen> createState() => _ErrorScreenState();
@@ -17,9 +18,19 @@ class _ErrorScreenState extends State<ErrorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder(
-      child: Column(
-        children: [const Text('我是404'), Text("错误原因：${widget.errorState}")],
+    final config = GoRouter.of(context).routerDelegate.currentConfiguration;
+
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text('404'),
+          leading: IconButton(
+            onPressed: () {
+              context.replace('/splash');
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          )),
+      body: Column(
+        children: [Text("错误原因：${config.error}")],
       ),
     );
   }

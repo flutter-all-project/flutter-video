@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_video/router/route_name.dart';
+import 'package:go_router/go_router.dart';
 
 class VideoPlayer extends StatefulWidget {
   const VideoPlayer({super.key});
@@ -34,13 +36,19 @@ class _VideoPlayerState extends State<VideoPlayer> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-        // child: FijkView(
-        //   player: player,
-        //   // panelBuilder: (FijkPlayer player, FijkData data, BuildContext context, Size viewSize, Rect texturePos) {
-        //   //   return VideoUI(player: player, buildContext: context, viewSize: viewSize, texturePos: texturePos);
-        //   // },
-        // ),
-        );
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          context.pushReplacement(Routers.splash);
+        },
+        child: const Text('data'),
+      ),
+      // child: FijkView(
+      //   player: player,
+      //   // panelBuilder: (FijkPlayer player, FijkData data, BuildContext context, Size viewSize, Rect texturePos) {
+      //   //   return VideoUI(player: player, buildContext: context, viewSize: viewSize, texturePos: texturePos);
+      //   // },
+      // ),
+    );
   }
 }

@@ -14,11 +14,6 @@ final lightTheme = ThemeData(
   useMaterial3: true,
   splashFactory: NoSplash.splashFactory,
   highlightColor: Colors.transparent, // 手指点击时候的颜色
-  tabBarTheme: const TabBarTheme(splashFactory: NoSplash.splashFactory),
-  textButtonTheme: const TextButtonThemeData(
-    // 去掉 TextButton 的水波纹效果
-    style: ButtonStyle(splashFactory: NoSplash.splashFactory),
-  ),
 );
 
 final darkTheme = ThemeData(
@@ -26,11 +21,6 @@ final darkTheme = ThemeData(
   useMaterial3: true,
   splashFactory: NoSplash.splashFactory,
   highlightColor: Colors.transparent, // 手指点击时候的颜色
-  tabBarTheme: const TabBarTheme(splashFactory: NoSplash.splashFactory),
-  textButtonTheme: const TextButtonThemeData(
-    // 去掉 TextButton 的水波纹效果
-    style: ButtonStyle(splashFactory: NoSplash.splashFactory),
-  ),
 );
 
 const lightColorScheme = ColorScheme(

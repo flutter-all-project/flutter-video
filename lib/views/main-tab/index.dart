@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video/views/home/index.dart';
-import 'package:flutter_video/views/mine/index.dart';
+import 'package:flutter_video/views/main-tab/home.dart';
+import 'package:flutter_video/views/main-tab/mine.dart';
 
 class MainTab extends StatefulWidget {
   const MainTab({Key? key, required this.title}) : super(key: key);

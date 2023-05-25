@@ -5,10 +5,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:android_intent_plus/android_intent.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
 import 'package:network_info_plus/network_info_plus.dart';
@@ -31,7 +29,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 // 所有 part 属于 util.plugin 这些 part 共享所有变量
 part 'android_intent.dart';
-part 'device_info.dart';
 part 'file.dart';
 part 'ip.dart';
 part 'logger.dart';

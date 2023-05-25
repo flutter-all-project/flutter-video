@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_video/views/home/comp/video_player.dart';
-import 'package:flutter_video/views/home/comp/wechat_picker_screen.dart';
+import 'package:flutter_video/views/main-tab/comp/video_player.dart';
+import 'package:flutter_video/views/main-tab/comp/wechat_picker_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,32 +48,30 @@ class _HomeState extends State<Home> with TickerProviderStateMixin, AutomaticKee
         elevation: 0,
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(30.h),
-          child: Stack(
+          child: Row(
             children: [
               Expanded(
                 flex: 1,
                 child: TabBar(
                   controller: controller,
                   isScrollable: true, // 横向滚动
+                  dividerColor: Colors.transparent,
                   tabs: tabs,
                 ),
               ),
-              Positioned(
-                right: 0,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 0.03.w),
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(2, 1), //x,y轴
-                        color: Colors.black38, //投影颜色
-                        blurRadius: 20, //模糊半径
-                        spreadRadius: 0.03, // 阴影距离
-                      )
-                    ],
-                  ),
-                  child: const Icon(Icons.menu),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 0.03.w),
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(2, 1), //x,y轴
+                      color: Colors.black38, //投影颜色
+                      blurRadius: 20, //模糊半径
+                      spreadRadius: 0.03, // 阴影距离
+                    )
+                  ],
                 ),
+                child: const Icon(Icons.menu),
               )
             ],
           ),

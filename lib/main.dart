@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_video/config/theme/theme.dart';
 import 'package:flutter_video/router/index.dart';
+import 'package:flutter_video/utils/system/index.dart';
+import 'package:flutter_video/utils/system/is_dark.dart';
 import 'package:flutter_video/utils/system/scroll_behavior.dart';
 
 void main() async {
@@ -17,9 +19,8 @@ void main() async {
   PaintingBinding.instance.imageCache.maximumSize = 100;
   // 图片缓存大小 50m
   PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
-
-  await ScreenUtil.ensureScreenSize();
-
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge); // 安卓 10 以上支持
+  // await ScreenUtil.ensureScreenSize();
   runApp(const MyApp());
 }
 
@@ -31,7 +32,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Video 播放器',
-      routerConfig: CustomRouter().routers,
+      routerConfig: AppRouter().routers,
+      // routeInformationProvider: AppRouter().routers.routeInformationProvider,
+      // routeInformationParser: AppRouter().routers.routeInformationParser,
+      // routerDelegate: AppRouter().routers.routerDelegate,
 
       // 亮色主题
       theme: lightTheme,
@@ -63,6 +67,7 @@ class MyApp extends StatelessWidget {
       checkerboardOffscreenLayers: false,
 
       builder: (context, child) {
+        barColor(isDarkMode(context));
         ScreenUtil.init(context, designSize: const Size(375, 812));
 
         return MediaQuery(

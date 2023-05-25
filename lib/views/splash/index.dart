@@ -12,33 +12,42 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+  late Timer _timer;
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () => context.go('/main-tab'));
+    init();
+  }
+
+  void init() {
+    // Future.delayed(const Duration(seconds: 2), () => context.push('/splash/main-tab'));
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      context.pushReplacementNamed(Routers.mainTab);
+      timer.cancel();
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("我是 splash"),
-      ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-              // backgroundColor: Color(0xFDF9FD),
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
-            onPressed: () {
-              context.replaceNamed(homeTab);
-            },
-            child: const Text('我是 splash'),
+            // backgroundColor: Color(0xFDF9FD),
           ),
-        ],
+          onPressed: () => context.pushReplacementNamed(Routers.mainTab),
+          child: const Text('我是 splash'),
+        ),
       ),
     );
   }

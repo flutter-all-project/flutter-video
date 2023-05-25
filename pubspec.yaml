@@ -29,7 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   #  flutter Navigation 2 官方路由
-  go_router: ^7.0.1
+  go_router: ^7.1.1
   # http请求（中国封装）
   dio: ^5.1.2
   # toast

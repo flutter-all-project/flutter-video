@@ -1,3 +1,5 @@
-const String homeTab = 'main-tab';
-const String splash = 'splash';
-const String login = 'login';
+class Routers {
+  static const String mainTab = 'main-tab';
+  static const String splash = 'splash';
+  static const String login = 'login';
+}

@@ -1,31 +1,42 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_video/router/page_transition.dart';
 import 'package:flutter_video/router/route_config.dart';
+import 'package:flutter_video/router/route_name.dart';
 import 'package:flutter_video/views/error/index.dart';
 import 'package:go_router/go_router.dart';
 import 'app_route_observer.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_web_plugins/url_strategy.dart';
 
-//文章:https://juejin.cn/post/7153503260614393886#heading-2
+// 文章:https://juejin.cn/post/7153503260614393886#heading-2
+// 全：https://juejin.cn/post/7047035390003249189#heading-30
 
-class CustomRouter {
-  static final _instance = CustomRouter._in();
-  factory CustomRouter() => _instance;
+class AppRouter {
+  static final _instance = AppRouter._in();
+  factory AppRouter() => _instance;
 
-  late final GoRouter routers = GoRouter(
-    initialLocation: '/splash',
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+  final GoRouter routers = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: Routers.splash,
     routes: routes,
-    errorBuilder: (context, state) => ErrorScreen(
-      errorState: state.error,
-    ),
-    observers: [appRouteObserver],
+    errorPageBuilder: slideTransitionAnimation((context, state) => ErrorScreen(errState: state)),
+    observers: [
+      // 整个应用的路由监听
+      routeObserver,
+      // 页面级路由监听
+      RouteObserver<PageRoute>(),
+    ],
     // 调试日志诊断
     debugLogDiagnostics: true,
   );
 
-  late final RouteObserver<PageRoute> pageRouteObserver; // 页面级路由监听
-  late final RouteObserver<PageRoute> appRouteObserver; // 整个应用的路由监听
-
-  CustomRouter._in() {
-    pageRouteObserver = RouteObserver<PageRoute>();
-    appRouteObserver = routeObserver;
+  AppRouter._in() {
+    // 在 WEB 的 URL 中关闭 #
+    if (kIsWeb) {
+      usePathUrlStrategy();
+    }
   }
 }
