@@ -1,10 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_video/router/route-config.dart';
+import 'package:flutter_video/router/route_config.dart';
 import 'package:flutter_video/views/error/index.dart';
 import 'package:go_router/go_router.dart';
-import 'app-route-observer.dart';
+import 'app_route_observer.dart';
 
 //文章:https://juejin.cn/post/7153503260614393886#heading-2
 

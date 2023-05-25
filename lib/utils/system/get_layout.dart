@@ -28,11 +28,12 @@ getPosition({BuildContext? context, GlobalKey? key}) {
 }
 
 // 获取屏幕信息
+// 原来是 window ，新版本修改为 View.of(context!)
 getScreenInfo({BuildContext? context}) {
   return {
-    'physicalSize-window': window.physicalSize, // 屏幕尺寸
-    'physicalSize-MediaQuery': MediaQuery.of(context!).size, // 屏幕尺寸
-    'devicePixelRatio': window.devicePixelRatio // 设备像素比
+    'physicalSize-window': View.of(context!).physicalSize, // 屏幕尺寸
+    'physicalSize-MediaQuery': MediaQuery.of(context).size, // 屏幕尺寸
+    'devicePixelRatio': View.of(context).devicePixelRatio // 设备像素比
   };
 }
 

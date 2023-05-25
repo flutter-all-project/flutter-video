@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_video/router/page-transition.dart';
-import 'package:flutter_video/router/route-name.dart';
-import 'package:flutter_video/utils/system/index.dart';
+import 'package:flutter_video/router/page_transition.dart';
+import 'package:flutter_video/router/route_name.dart';
 import 'package:flutter_video/views/main-tab/index.dart';
 import 'package:flutter_video/views/splash/index.dart';
 import 'package:go_router/go_router.dart';
