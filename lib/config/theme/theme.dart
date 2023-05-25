@@ -1,7 +1,7 @@
 // flex_color_scheme 7.1.2 flutter material3 的主题插件
 
 // 官方主题配置：https://m3.material.io/theme-builder#/dynamic
-// 主题切换地址：https://rydmike.com/flexcolorscheme/themesplayground-v7-1/#/
+// flex_color_scheme 主题切换地址 （theme colors 中可自定义颜色）：https://rydmike.com/flexcolorscheme/themesplayground-v7-1/#/
 // 主题配置-掘金：https://juejin.cn/post/7225896523296096315#heading-1
 
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ final darkTheme = ThemeData(
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primary: Color(0xFF466800),
+  primary: Color(0xFF466800), // 按钮文字颜色
   onPrimary: Color(0xFFFFFFFF),
   primaryContainer: Color(0xFFB9F552),
   onPrimaryContainer: Color(0xFF121F00),

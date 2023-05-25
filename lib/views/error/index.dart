@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_video/router/route_name.dart';
 import 'package:go_router/go_router.dart';
 
 class ErrorScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ErrorScreenState extends State<ErrorScreen> {
           title: const Text('404'),
           leading: IconButton(
             onPressed: () {
-              context.replace('/splash');
+              context.replaceNamed(Routers.splash);
             },
             icon: const Icon(Icons.arrow_back_ios),
           )),

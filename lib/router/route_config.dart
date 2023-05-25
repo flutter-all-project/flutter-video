@@ -13,7 +13,7 @@ final List<RouteBase> routes = [
   GoRoute(
     path: '/splash',
     name: Routers.splash,
-    pageBuilder: slideTransitionAnimation((context, state) => const Splash()),
+    pageBuilder: fadeTransitionAnimation((context, state) => const Splash()),
   ),
   GoRoute(
     path: '/main-tab',

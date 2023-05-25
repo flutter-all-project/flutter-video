@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_video/router/page_transition.dart';
 import 'package:flutter_video/router/route_config.dart';
-import 'package:flutter_video/router/route_name.dart';
 import 'package:flutter_video/views/error/index.dart';
 import 'package:go_router/go_router.dart';
 import 'app_route_observer.dart';
@@ -20,7 +19,7 @@ class AppRouter {
 
   final GoRouter routers = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: Routers.splash,
+    initialLocation: '/splash',
     routes: routes,
     errorPageBuilder: slideTransitionAnimation((context, state) => ErrorScreen(errState: state)),
     observers: [

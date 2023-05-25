@@ -19,8 +19,11 @@ void main() async {
   PaintingBinding.instance.imageCache.maximumSize = 100;
   // 图片缓存大小 50m
   PaintingBinding.instance.imageCache.maximumSizeBytes = 50 << 20;
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge); // 安卓 10 以上支持
-  // await ScreenUtil.ensureScreenSize();
+
+  await ScreenUtil.ensureScreenSize();
+
   runApp(const MyApp());
 }
 

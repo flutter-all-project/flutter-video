@@ -23,7 +23,7 @@ class _SplashState extends State<Splash> {
   void init() {
     // Future.delayed(const Duration(seconds: 2), () => context.push('/splash/main-tab'));
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      context.pushReplacementNamed(Routers.mainTab);
+      // context.pushReplacementNamed(Routers.mainTab);
       timer.cancel();
     });
   }

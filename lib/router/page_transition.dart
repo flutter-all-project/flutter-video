@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_video/utils/plugin/index.dart';
 import 'package:go_router/go_router.dart';
 
 // transition demo:https://github.com/csells/go_router/blob/master/example/lib/transitions.dart
@@ -10,7 +11,7 @@ GoRouterPageBuilder slideTransitionAnimation(AnimationCallBack<BuildContext, GoR
     return CustomTransitionPage(
       key: state.pageKey,
       child: fn(context, state),
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 500),
       transitionsBuilder: (
         BuildContext context,
         Animation<double> animation, // 正向的动画
