@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_video/utils/plugin/index.dart';
 import 'package:go_router/go_router.dart';
 
 // transition demo:https://github.com/csells/go_router/blob/master/example/lib/transitions.dart

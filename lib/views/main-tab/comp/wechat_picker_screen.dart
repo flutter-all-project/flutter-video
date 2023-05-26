@@ -15,7 +15,7 @@ class _WeChatPickerScreenState extends State<WeChatPickerScreen> {
   }
 
   void openSource() async {
-    final List<AssetEntity>? result = await AssetPicker.pickAssets(
+    final List<AssetEntity>? _ = await AssetPicker.pickAssets(
       context,
       pickerConfig: const AssetPickerConfig(
         textDelegate: AssetPickerTextDelegate(),
